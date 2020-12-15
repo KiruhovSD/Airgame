@@ -10,6 +10,11 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController {
+    func getShip() -> SCNNode {
+        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
+        return ship.clone()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +45,10 @@ class GameViewController: UIViewController {
         scene.rootNode.addChildNode(ambientLightNode)
         
         // retrieve the ship node
-        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
+//        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
         
         // animate the 3d object
-        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
+//        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
